@@ -1,0 +1,72 @@
+name: ci
+
+on:
+  push:
+    branches: [ main ]
+    
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Download StdUtils
+      uses: carlosperate/download-file-action@v1.0.3
+      with:
+        file-url: https://github.com/lordmulder/stdutils/releases/download/1.14/StdUtils.2018-10-27.zip
+        location: ${{ github.workspace }}
+    - name: Extract StdUtils
+      run: |
+        7z e -o"${{ github.workspace }}/NSIS_Plugins/Plugins/x86-ansi" "${{ github.workspace }}/StdUtils.2018-10-27.zip" Plugins/ANSI/StdUtils.dll
+        7z e -o"${{ github.workspace }}/NSIS_Plugins/Plugins/x86-unicode" "${{ github.workspace }}/StdUtils.2018-10-27.zip" Plugins/Unicode/StdUtils.dll
+        7z e "${{ github.workspace }}/StdUtils.2018-10-27.zip" Include/StdUtils.nsh
+
+    - name: Download NsisDotNetChecker
+      uses: carlosperate/download-file-action@v1.0.3
+      with:
+        file-url: https://github.com/sitiom/NsisDotNetChecker/archive/refs/heads/master.zip
+        file-name: NsisDotNetChecker-master.zip
+        location: ${{ github.workspace }}
+    - name: Extract NsisDotNetChecker
+      run: |
+        7z e -o"${{ github.workspace }}/NSIS_Plugins/Plugins/x86-unicode" "${{ github.workspace }}/NsisDotNetChecker-master.zip" NsisDotNetChecker-master/bin/DotNetChecker.dll
+        7z e "${{ github.workspace }}/NsisDotNetChecker-master.zip" NsisDotNetChecker-master/nsis/DotNetChecker.nsh
+        
+    - name: Download INetC
+      uses: carlosperate/download-file-action@v1.0.3
+      with:
+        file-url: https://github.com/DigitalMediaServer/NSIS-INetC-plugin/releases/download/v1.0.5.6/INetC.zip
+        location: ${{ github.workspace }}
+    - name: Extract INetC
+      run: |
+        7z x -o"${{ github.workspace }}/NSIS_Plugins/Plugins" "${{ github.workspace }}/INetC.zip"
+
+    - name: Download nsisunz
+      uses: carlosperate/download-file-action@v1.0.3
+      with:
+        file-url: https://github.com/past-due/nsisunz/files/6176644/nsisunz.zip
+        location: ${{ github.workspace }}
+    - name: Extract nsisunz
+      run: 7z x -o"${{ github.workspace }}/NSIS_Plugins/Plugins" "${{ github.workspace }}/nsisunz.zip"
+   
+    - name: Download MoveFileFolder.nsh
+      uses: carlosperate/download-file-action@v1.0.3
+      with:
+        file-url: https://gist.github.com/sitiom/0aa6bca2c5a66fa2846852225b9d31f1/raw/6c4131075226a65c48798ed562a4971e636fc806/MoveFileFolder.nsh
+    
+    - name: Copy wizard image to path
+      run: Copy-Item .\extravi-reshade.bmp 'C:\Program Files (x86)\NSIS\Contrib\Graphics\Wizard\extravi-reshade.bmp'
+
+    - name: Build installer
+      uses: joncloud/makensis-action@v3.4
+      with:
+        script-file: installer.nsi
+        arguments: "/V3"
+        additional-plugin-paths: ${{ github.workspace }}/NSIS_Plugins/Plugins
+    
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: "Setup - Extravi's ReShade-Preset.exe"
+        path: "Setup - Extravi's ReShade-Preset.exe"
