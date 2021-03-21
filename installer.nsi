@@ -44,7 +44,7 @@ InstType "Full";1
 !define MUI_ICON "extravi-reshade.ico"
 !define MUI_UNICON "extravi-reshade.ico"
 !define MUI_ABORTWARNING
-!define MUI_WELCOMEFINISHPAGE_BITMAP "${NSISDIR}\Contrib\Graphics\Wizard\extravi-reshade.bmp"
+!define MUI_WELCOMEFINISHPAGE_BITMAP "extravi-reshade.bmp"
 !define MUI_WELCOMEPAGE_TEXT "This will install Extravi's ReShade Presets on your computer.$\r$\n\
 $\r$\n\
 It is recommended that you close Roblox before continuing.$\r$\n\

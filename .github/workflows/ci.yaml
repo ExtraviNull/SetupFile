@@ -56,9 +56,6 @@ jobs:
       uses: carlosperate/download-file-action@v1.0.3
       with:
         file-url: https://gist.github.com/sitiom/0aa6bca2c5a66fa2846852225b9d31f1/raw/6c4131075226a65c48798ed562a4971e636fc806/MoveFileFolder.nsh
-    
-    - name: Copy wizard image to path
-      run: Copy-Item .\extravi-reshade.bmp 'C:\Program Files (x86)\NSIS\Contrib\Graphics\Wizard\extravi-reshade.bmp'
 
     - name: Build installer
       uses: joncloud/makensis-action@v3.4
