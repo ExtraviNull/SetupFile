@@ -1,6 +1,6 @@
 # SetupFile
 
-The setup file for Extravi's ReShade Presets.
+The installer for Extravi ReShade Presets by: https://github.com/sitiom
 
 ## Prerequisites
 
