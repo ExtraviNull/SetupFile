@@ -70,5 +70,5 @@ jobs:
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
-        name: "Setup - Extravi's ReShade-Preset.exe"
+        name: "Setup"
         path: "Setup - Extravi's ReShade-Preset.exe"
