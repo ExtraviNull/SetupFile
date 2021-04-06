@@ -145,6 +145,14 @@ Section "Reflective"
   SectionIn 1
   File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Reflective.ini"
 SectionEnd
+Section "Community Ultra Edit"
+  SectionIn 1
+  File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Community Ultra Edit.ini"
+SectionEnd
+Section "Community Low Edit"
+  SectionIn 1
+  File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Community Low Edit.ini"
+SectionEnd
 Section "Ultra"
   SectionIn 1
   File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Ultra.ini"
@@ -177,6 +185,8 @@ Section "uninstall"
 
     Delete "$robloxPath\Extravi's ReShade-Preset Super Reflective.ini"
     Delete "$robloxPath\Extravi's ReShade-Preset Reflective.ini"
+    Delete "$robloxPath\Extravi's ReShade-Preset Community Ultra Edit.ini"
+    Delete "$robloxPath\Extravi's ReShade-Preset Community Low Edit.ini"
     Delete "$robloxPath\Extravi's ReShade-Preset Ultra.ini"
     Delete "$robloxPath\Extravi's ReShade-Preset High.ini"
     Delete "$robloxPath\Extravi's ReShade-Preset Medium.ini"
