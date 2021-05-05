@@ -137,6 +137,10 @@ SectionEnd
 
 SectionGroup /e "Presets"
 
+Section "Old Preset"
+  SectionIn 1
+  File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Old.ini"
+SectionEnd
 Section "Super Reflective"
   SectionIn 1
   File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Super Reflective.ini"
@@ -183,6 +187,7 @@ Section "uninstall"
     Delete "$INSTDIR\uninstall.exe"
     RMDir $INSTDIR
 
+    Delete "$robloxPath\Extravi's ReShade-Preset Old.ini"
     Delete "$robloxPath\Extravi's ReShade-Preset Super Reflective.ini"
     Delete "$robloxPath\Extravi's ReShade-Preset Reflective.ini"
     Delete "$robloxPath\Extravi's ReShade-Preset Community Ultra Edit.ini"
