@@ -137,17 +137,13 @@ SectionEnd
 
 SectionGroup /e "Presets"
 
-Section "Old Preset"
-  SectionIn 1
-  File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Old.ini"
-SectionEnd
 Section "Super Reflective"
   SectionIn 1
-  File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Super Reflective.ini"
+  File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Ultra Super Reflective.ini"
 SectionEnd
 Section "Reflective"
   SectionIn 1
-  File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Reflective.ini"
+  File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Ultra Reflective.ini"
 SectionEnd
 Section "Community Ultra Edit"
   SectionIn 1
@@ -160,14 +156,6 @@ SectionEnd
 Section "Ultra"
   SectionIn 1
   File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Ultra.ini"
-SectionEnd
-Section "High"
-  SectionIn 1
-  File "Extravi's ReShade-Preset\Extravi's ReShade-Preset High.ini"
-SectionEnd
-Section "Medium"
-  SectionIn 1
-  File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Medium.ini"
 SectionEnd
 Section "Low"
   SectionIn 1
