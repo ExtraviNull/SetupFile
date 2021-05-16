@@ -224,5 +224,5 @@ Function "un.SetRobloxPath"
 FunctionEnd
 
 Function "OpenDiscordLink"
-  ExecShell "open" "https://discord.gg/WkjUCwD"
+  ExecShell "open" "https://discord.gg/n4QcF3s4NB"
 FunctionEnd
