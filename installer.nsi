@@ -131,37 +131,25 @@ Section "ReShade (required)"
 
   SetOutPath $robloxPath
 
-  File "Extravi's ReShade-Preset\opengl32.dll"
-  File "Extravi's ReShade-Preset\Reshade.ini"
+  File "Extravi's ReShade-Preset\dxgi.dll"
+  File "Extravi's ReShade-Preset\ReShade.ini"
 SectionEnd
 
 SectionGroup /e "Presets"
 
-Section "Super Reflective"
-  SectionIn 1
-  File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Ultra Super Reflective.ini"
-SectionEnd
-Section "Reflective"
-  SectionIn 1
-  File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Ultra Reflective.ini"
-SectionEnd
-Section "Community Ultra Edit"
-  SectionIn 1
-  File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Community Ultra Edit.ini"
-SectionEnd
-Section "Community Low Edit"
-  SectionIn 1
-  File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Community Low Edit.ini"
-SectionEnd
 Section "Ultra"
   SectionIn 1
   File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Ultra.ini"
+SectionEnd
+Section "Medium"
+  SectionIn 1
+  File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Medium.ini"
 SectionEnd
 Section "Low"
   SectionIn 1
   File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Low.ini"
 SectionEnd
-Section "Chromakey"
+ Section "Chromakey"
   SectionIn 1
   File "Extravi's ReShade-Preset\Greenscreen.ini"
 SectionEnd
@@ -175,16 +163,13 @@ Section "uninstall"
     Delete "$INSTDIR\uninstall.exe"
     RMDir $INSTDIR
 
-    Delete "$robloxPath\Extravi's ReShade-Preset Ultra Super Reflective.ini"
-    Delete "$robloxPath\Extravi's ReShade-Preset Ultra Reflective.ini"
-    Delete "$robloxPath\Extravi's ReShade-Preset Community Ultra Edit.ini"
-    Delete "$robloxPath\Extravi's ReShade-Preset Community Low Edit.ini"
     Delete "$robloxPath\Extravi's ReShade-Preset Ultra.ini"
+    Delete "$robloxPath\Extravi's ReShade-Preset Medium.ini"
     Delete "$robloxPath\Extravi's ReShade-Preset Low.ini"
     Delete "$robloxPath\Greenscreen.ini"
-    Delete "$robloxPath\Reshade.ini"
+    Delete "$robloxPath\ReShade.ini"
     RMDir /r "$robloxPath\reshade-shaders"
-    Delete "$robloxPath\opengl32.dll"
+    Delete "$robloxPath\dxgi.dll"
 SectionEnd
 
 # Functions
