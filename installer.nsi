@@ -141,17 +141,21 @@ Section "Ultra"
   SectionIn 1
   File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Ultra.ini"
 SectionEnd
-Section "Medium"
-  SectionIn 1
-  File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Medium.ini"
-SectionEnd
 Section "Low"
   SectionIn 1
   File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Low.ini"
 SectionEnd
- Section "Chromakey"
+ Section "Glossy"
   SectionIn 1
-  File "Extravi's ReShade-Preset\Greenscreen.ini"
+  File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Glossy.ini"
+SectionEnd
+  Section "RTGI-CS-1.00"
+  SectionIn 1
+  File "Extravi's ReShade-Preset\Extravi's ReShade-Preset RTGI-CS-1.00.ini"
+SectionEnd
+  Section "RTGI-CS-2.30"
+  SectionIn 1
+  File "Extravi's ReShade-Preset\Extravi's ReShade-Preset RTGI-CS-2.30.ini"
 SectionEnd
 SectionGroupEnd
 
@@ -164,9 +168,10 @@ Section "uninstall"
     RMDir $INSTDIR
 
     Delete "$robloxPath\Extravi's ReShade-Preset Ultra.ini"
-    Delete "$robloxPath\Extravi's ReShade-Preset Medium.ini"
     Delete "$robloxPath\Extravi's ReShade-Preset Low.ini"
-    Delete "$robloxPath\Greenscreen.ini"
+    Delete "$robloxPath\Extravi's ReShade-Preset Glossy.ini"
+    Delete "$robloxPath\Extravi's ReShade-Preset RTGI-CS-1.00.ini"
+    Delete "$robloxPath\Extravi's ReShade-Preset RTGI-CS-2.30.ini"
     Delete "$robloxPath\ReShade.ini"
     RMDir /r "$robloxPath\reshade-shaders"
     Delete "$robloxPath\dxgi.dll"
