@@ -1,51 +1,56 @@
-Unicode true
+﻿Unicode true
 
-# Startup
+####################################################################
+# Includes
 
-!include DotNetChecker.nsh
 !include MUI2.nsh
 !include FileFunc.nsh
+!include LogicLib.nsh
+
 !insertmacro Locate
 Var /GLOBAL switch_overwrite
 !include MoveFileFolder.nsh
-!include LogicLib.nsh
 
+####################################################################
+# File Info
+
+!define PRODUCT_NAME "Extravi's ReShade-Preset"
+!define PRODUCT_DESCRIPTION "Shader presets made by Extravi."
+!define COPYRIGHT "Copyright © 2021 sitiom, Extravi"
+!define VERSION "1.1.0"
+
+VIProductVersion "${VERSION}.0"
+VIAddVersionKey "ProductName" "${PRODUCT_NAME}"
+VIAddVersionKey "ProductVersion" "${VERSION}"
+VIAddVersionKey "FileDescription" "${PRODUCT_DESCRIPTION}"
+VIAddVersionKey "LegalCopyright" "${COPYRIGHT}"
+VIAddVersionKey "FileVersion" "${VERSION}.0"
+
+####################################################################
 # Installer Attributes
 
-Name "Extravi's ReShade Presets"
-Outfile "Setup - Extravi's ReShade-Preset.exe"
-Caption "Setup - Extravi's ReShade Presets"
-BrandingText "Extravi's ReShade Presets"
+Name "${PRODUCT_NAME}"
+Outfile "Setup - ${PRODUCT_NAME}.exe"
+Caption "Setup - ${PRODUCT_NAME}"
+BrandingText "${PRODUCT_NAME}"
 
 RequestExecutionLevel user
  
-InstallDir "$LOCALAPPDATA\Extravi's ReShade Presets"
+InstallDir "$LOCALAPPDATA\${PRODUCT_NAME}"
 
-# Version Info
-!define PRODUCT_NAME "Extravi's ReShade Presets"
-!define PRODUCT_DESCRIPTION "Extravi's ReShade Presets"
-!define COPYRIGHT "Copyright © 2021 sitiom, Extravi"
-!define PRODUCT_VERSION "1.0.0.0"
-!define SETUP_VERSION 1.0.0.0
-
-VIProductVersion "${PRODUCT_VERSION}"
-VIAddVersionKey "ProductName" "${PRODUCT_NAME}"
-VIAddVersionKey "ProductVersion" "${PRODUCT_VERSION}"
-VIAddVersionKey "FileDescription" "${PRODUCT_DESCRIPTION}"
-VIAddVersionKey "LegalCopyright" "${COPYRIGHT}"
-VIAddVersionKey "FileVersion" "${SETUP_VERSION}"
-
+####################################################################
 # Interface Settings
 
 InstType "Full";1
 
+####################################################################
 # Pages
 
 !define MUI_ICON "extravi-reshade.ico"
 !define MUI_UNICON "extravi-reshade.ico"
 !define MUI_ABORTWARNING
 !define MUI_WELCOMEFINISHPAGE_BITMAP "extravi-reshade.bmp"
-!define MUI_WELCOMEPAGE_TEXT "This will install Extravi's ReShade Presets on your computer.$\r$\n\
+!define MUI_WELCOMEPAGE_TEXT "This will install ${PRODUCT_NAME} on your computer.$\r$\n\
 $\r$\n\
 It is recommended that you close Roblox before continuing.$\r$\n\
 $\r$\n\
@@ -55,7 +60,7 @@ Click Next to continue."
 !define MUI_LICENSEPAGE_RADIOBUTTONS
 !define MUI_COMPONENTSPAGE_NODESC
 !define MUI_FINISHPAGE_TEXT_LARGE
-!define MUI_FINISHPAGE_TEXT "Setup has finished installing Extravi's ReShade Presets on your computer. The effects will be applied the next time you launch Roblox.$\r$\n\
+!define MUI_FINISHPAGE_TEXT "Setup has finished installing ${PRODUCT_NAME} on your computer. The effects will be applied the next time you launch Roblox.$\r$\n\
 $\r$\n\
 Click Finish to exit Setup."
 !define MUI_FINISHPAGE_SHOWREADME "https://www.youtube.com/channel/UCOZnRzWstxDLyW30TjWEevQ?sub_confirmation=1"
@@ -69,50 +74,47 @@ Click Finish to exit Setup."
 !insertmacro MUI_PAGE_WELCOME
 !insertmacro MUI_PAGE_LICENSE "Extravi's ReShade-Preset\license.txt"
 !insertmacro MUI_PAGE_COMPONENTS
+!define MUI_PAGE_CUSTOMFUNCTION_SHOW "StartTaskbarProgress"
 !insertmacro MUI_PAGE_INSTFILES
 !insertmacro MUI_PAGE_FINISH
 !insertmacro MUI_UNPAGE_CONFIRM
 !insertmacro MUI_UNPAGE_INSTFILES
 
-# Languages
+####################################################################
+# Language
 
 !insertmacro MUI_LANGUAGE "English"
 
-Var robloxPath
-
+####################################################################
 # Sections
 
-Section "Microsoft .NET Framework v4.8 (required)"
-  SectionIn 1 RO
-
-  !insertmacro CheckNetFramework 48
-SectionEnd
+Var robloxPath
 
 Section "ReShade (required)"
   SectionIn 1 RO
   
   SetOutPath $INSTDIR
 
+  WriteUninstaller "$INSTDIR\uninstall.exe"
+
   ; Uninstall Regkeys
   WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\extravi-reshade-presets" "DisplayIcon" "$INSTDIR\uninstall.exe"
-  WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\extravi-reshade-presets" "DisplayName" "Extravi's ReShade Presets"
-  WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\extravi-reshade-presets" "DisplayVersion" "1.0.0"
+  WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\extravi-reshade-presets" "DisplayName" "${PRODUCT_NAME}"
+  WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\extravi-reshade-presets" "DisplayVersion" "${VERSION}"
   WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\extravi-reshade-presets" "QuietUninstallString" "$INSTDIR\uninstall.exe /S"
   WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\extravi-reshade-presets" "UninstallString" "$INSTDIR\uninstall.exe"
   WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\extravi-reshade-presets" "InstallLocation" "$INSTDIR"
   WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\extravi-reshade-presets" "Publisher" "Extravi"
 
-  WriteUninstaller "$INSTDIR\uninstall.exe"
-
-  inetc::get /NOCANCEL "https://codeload.github.com/crosire/reshade-shaders/zip/master" "reshade-shaders-master.zip"
+  NSCurl::http GET "https://github.com/crosire/reshade-shaders/archive/refs/heads/master.zip" "reshade-shaders-master.zip" /END
   nsisunz::Unzip "reshade-shaders-master.zip" "$INSTDIR"
   Delete "reshade-shaders-master.zip"
 
-  inetc::get /NOCANCEL "https://codeload.github.com/prod80/prod80-ReShade-Repository/zip/master" "prod80-ReShade-Repository-master.zip"
+  NSCurl::http GET "https://github.com/prod80/prod80-ReShade-Repository/archive/refs/heads/master.zip" "prod80-ReShade-Repository-master.zip" /END
   nsisunz::Unzip "prod80-ReShade-Repository-master.zip" "$INSTDIR"
   Delete "prod80-ReShade-Repository-master.zip"
   
-  inetc::get /NOCANCEL "https://codeload.github.com/martymcmodding/qUINT/zip/master" "qUINT-master.zip"
+  NSCurl::http GET "https://github.com/martymcmodding/qUINT/archive/refs/heads/master.zip" "qUINT-master.zip" /END
   nsisunz::Unzip "qUINT-master.zip" "$INSTDIR"
   Delete "qUINT-master.zip"
 
@@ -136,47 +138,47 @@ Section "ReShade (required)"
 SectionEnd
 
 SectionGroup /e "Presets"
-
-Section "Ultra"
-  SectionIn 1
-  File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Ultra.ini"
-SectionEnd
-Section "Low"
-  SectionIn 1
-  File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Low.ini"
-SectionEnd
- Section "Glossy"
-  SectionIn 1
-  File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Glossy.ini"
-SectionEnd
-  Section "RTGI-CS-1.00"
-  SectionIn 1
-  File "Extravi's ReShade-Preset\Extravi's ReShade-Preset RTGI-CS-1.00.ini"
-SectionEnd
-  Section "RTGI-CS-2.30"
-  SectionIn 1
-  File "Extravi's ReShade-Preset\Extravi's ReShade-Preset RTGI-CS-2.30.ini"
-SectionEnd
+  Section "Ultra"
+    SectionIn 1
+    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Ultra.ini"
+  SectionEnd
+  Section "Low"
+    SectionIn 1
+    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Low.ini"
+  SectionEnd
+   Section "Glossy"
+    SectionIn 1
+    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Glossy.ini"
+  SectionEnd
+    Section "RTGI-CS-1.00"
+    SectionIn 1
+    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset RTGI-CS-1.00.ini"
+  SectionEnd
+    Section "RTGI-CS-2.30"
+    SectionIn 1
+    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset RTGI-CS-2.30.ini"
+  SectionEnd
 SectionGroupEnd
 
 Section "uninstall"
-    ${Locate} "$LOCALAPPDATA\Roblox\Versions" "/L=F /M=RobloxPlayerBeta.exe" "un.SetRobloxPath"
+  ${Locate} "$LOCALAPPDATA\Roblox\Versions" "/L=F /M=RobloxPlayerBeta.exe" "un.SetRobloxPath"
 
-    DeleteRegKey HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\extravi-reshade-presets"
+  Delete "$INSTDIR\uninstall.exe"
+  RMDir /r $INSTDIR
 
-    Delete "$INSTDIR\uninstall.exe"
-    RMDir $INSTDIR
+  DeleteRegKey HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\extravi-reshade-presets"
 
-    Delete "$robloxPath\Extravi's ReShade-Preset Ultra.ini"
-    Delete "$robloxPath\Extravi's ReShade-Preset Low.ini"
-    Delete "$robloxPath\Extravi's ReShade-Preset Glossy.ini"
-    Delete "$robloxPath\Extravi's ReShade-Preset RTGI-CS-1.00.ini"
-    Delete "$robloxPath\Extravi's ReShade-Preset RTGI-CS-2.30.ini"
-    Delete "$robloxPath\ReShade.ini"
-    RMDir /r "$robloxPath\reshade-shaders"
-    Delete "$robloxPath\dxgi.dll"
+  Delete "$robloxPath\Extravi's ReShade-Preset Ultra.ini"
+  Delete "$robloxPath\Extravi's ReShade-Preset Low.ini"
+  Delete "$robloxPath\Extravi's ReShade-Preset Glossy.ini"
+  Delete "$robloxPath\Extravi's ReShade-Preset RTGI-CS-1.00.ini"
+  Delete "$robloxPath\Extravi's ReShade-Preset RTGI-CS-2.30.ini"
+  Delete "$robloxPath\ReShade.ini"
+  RMDir /r "$robloxPath\reshade-shaders"
+  Delete "$robloxPath\dxgi.dll"
 SectionEnd
 
+####################################################################
 # Functions
 
 Function .onInit
@@ -208,6 +210,10 @@ Function "un.SetRobloxPath"
   StrCpy $robloxPath $R8
   StrCpy $0 StopLocate
   Push $0
+FunctionEnd
+
+Function "StartTaskbarProgress"
+  w7tbp::Start
 FunctionEnd
 
 Function "OpenDiscordLink"

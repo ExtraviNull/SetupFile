@@ -7,9 +7,8 @@ Made by [sitiom](https://github.com/sitiom).
 ## Build from Source
 Get [NSIS](https://nsis.sourceforge.io/Download) first, then install these libraries:
 
-- [StdUtils](https://github.com/lordmulder/stdutils)
-- [NsisDotNetChecker](https://github.com/sitiom/NsisDotNetChecker)
-- [Inetc](https://github.com/DigitalMediaServer/NSIS-INetC-plugin)
+- [TaskbarProgress](http://nsis.sourceforge.net/TaskbarProgress_plug-in)
+- [NSCurl](https://github.com/negrutiu/nsis-nscurl)
 - [nsisunz](https://github.com/past-due/nsisunz)
 - [MoveFileFolder](https://nsis.sourceforge.io/MoveFileFolder)
 
