@@ -133,7 +133,8 @@ Section "ReShade (required)"
 
   SetOutPath $robloxPath
 
-  File "Extravi's ReShade-Preset\dxgi.dll"
+  File "Extravi's ReShade-Preset\opengl32.dll"
+  File "Extravi's ReShade-Preset\opengl32.log"
   File "Extravi's ReShade-Preset\ReShade.ini"
 SectionEnd
 
@@ -175,7 +176,7 @@ Section "uninstall"
   Delete "$robloxPath\Extravi's ReShade-Preset RTGI-CS-2.30.ini"
   Delete "$robloxPath\ReShade.ini"
   RMDir /r "$robloxPath\reshade-shaders"
-  Delete "$robloxPath\dxgi.dll"
+  Delete "$robloxPath\opengl32.dll"
 SectionEnd
 
 ####################################################################
