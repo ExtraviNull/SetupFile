@@ -177,6 +177,7 @@ Section "uninstall"
   Delete "$robloxPath\ReShade.ini"
   RMDir /r "$robloxPath\reshade-shaders"
   Delete "$robloxPath\opengl32.dll"
+  Delete "$robloxPath\opengl32.log"
 SectionEnd
 
 ####################################################################
