@@ -133,8 +133,8 @@ Section "ReShade (required)"
 
   SetOutPath $robloxPath
 
-  File "Extravi's ReShade-Preset\opengl32.dll"
-  File "Extravi's ReShade-Preset\opengl32.log"
+  File "Extravi's ReShade-Preset\dxgi.dll"
+  File "Extravi's ReShade-Preset\dxgi.log"
   File "Extravi's ReShade-Preset\ReShade.ini"
   File "Extravi's ReShade-Preset\SegoeUI.ttf"
 SectionEnd
@@ -184,8 +184,8 @@ Section "uninstall"
   Delete "$robloxPath\Extravi's ReShade-Preset RTGI Compute Shader 2.30 Light Depth of Field.ini"
   Delete "$robloxPath\ReShade.ini"
   RMDir /r "$robloxPath\reshade-shaders"
-  Delete "$robloxPath\opengl32.dll"
-  Delete "$robloxPath\opengl32.log"
+  Delete "$robloxPath\dxgi.dll"
+  Delete "$robloxPath\dxgi.log"
   Delete "$robloxPath\SegoeUI.ttf"
 SectionEnd
 
