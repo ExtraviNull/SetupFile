@@ -172,15 +172,21 @@ Section "uninstall"
 
   DeleteRegKey HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\extravi-reshade-presets"
 
-  Delete "$robloxPath\Extravi's ReShade-Preset Ultra.ini"
-  Delete "$robloxPath\Extravi's ReShade-Preset Low.ini"
-  Delete "$robloxPath\Extravi's ReShade-Preset Glossy.ini"
-  Delete "$robloxPath\Extravi's ReShade-Preset RTGI-CS-1.00.ini"
-  Delete "$robloxPath\Extravi's ReShade-Preset RTGI-CS-2.30.ini"
+  Delete "$robloxPath\Extravi's ReShade-Preset Ultra Auto Depth of Field.ini"
+  Delete "$robloxPath\Extravi's ReShade-Preset Ultra Light Depth of Field.ini"
+  Delete "$robloxPath\Extravi's ReShade-Preset Low Auto Depth of Field.ini"
+  Delete "$robloxPath\Extravi's ReShade-Preset Low Light Depth of Field.ini"
+  Delete "$robloxPath\Extravi's ReShade-Preset FakeRTGI Auto Depth of Field.ini"
+  Delete "$robloxPath\Extravi's ReShade-Preset FakeRTGI Light Depth of Field.ini"
+  Delete "$robloxPath\Extravi's ReShade-Preset RTGI Compute Shader 1.00 Auto Depth of Field.ini"
+  Delete "$robloxPath\Extravi's ReShade-Preset RTGI Compute Shader 1.00 Light Depth of Field.ini"
+  Delete "$robloxPath\Extravi's ReShade-Preset RTGI Compute Shader 2.30 Auto Depth of Field.ini"
+  Delete "$robloxPath\Extravi's ReShade-Preset RTGI Compute Shader 2.30 Light Depth of Field.ini"
   Delete "$robloxPath\ReShade.ini"
   RMDir /r "$robloxPath\reshade-shaders"
   Delete "$robloxPath\opengl32.dll"
   Delete "$robloxPath\opengl32.log"
+  Delete "$robloxPath\SegoeUI.ttf"
 SectionEnd
 
 ####################################################################
