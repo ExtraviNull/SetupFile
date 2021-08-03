@@ -136,28 +136,31 @@ Section "ReShade (required)"
   File "Extravi's ReShade-Preset\opengl32.dll"
   File "Extravi's ReShade-Preset\opengl32.log"
   File "Extravi's ReShade-Preset\ReShade.ini"
+  File "Extravi's ReShade-Preset\SegoeUI.ttf"
 SectionEnd
 
 SectionGroup /e "Presets"
   Section "Ultra"
     SectionIn 1
-    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Ultra.ini"
+    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Ultra Auto Depth of Field.ini"
+    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Ultra Light Depth of Field.ini"
   SectionEnd
   Section "Low"
     SectionIn 1
-    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Low.ini"
+    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Low Auto Depth of Field.ini"
+    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Low Light Depth of Field.ini"
   SectionEnd
-   Section "Glossy"
+   Section "FakeRTGI"
     SectionIn 1
-    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Glossy.ini"
+    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset FakeRTGI Auto Depth of Field.ini"
+    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset FakeRTGI Light Depth of Field.ini"
   SectionEnd
-    Section "RTGI-CS-1.00"
+    Section "RTGI Compute Shader"
     SectionIn 1
-    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset RTGI-CS-1.00.ini"
-  SectionEnd
-    Section "RTGI-CS-2.30"
-    SectionIn 1
-    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset RTGI-CS-2.30.ini"
+    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset RTGI Compute Shader 1.00 Auto Depth of Field.ini"
+    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset RTGI Compute Shader 1.00 Light Depth of Field.ini"
+    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset RTGI Compute Shader 2.30 Auto Depth of Field.ini"
+    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset RTGI Compute Shader 2.30 Light Depth of Field.ini"
   SectionEnd
 SectionGroupEnd
 
