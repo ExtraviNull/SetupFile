@@ -29,6 +29,8 @@ VIAddVersionKey "FileVersion" "${VERSION}.0"
 ####################################################################
 # Installer Attributes
 
+ManifestDPIAware true
+
 Name "${PRODUCT_NAME}"
 Outfile "Setup - ${PRODUCT_NAME}.exe"
 Caption "Setup - ${PRODUCT_NAME}"
