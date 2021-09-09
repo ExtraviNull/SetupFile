@@ -4,7 +4,8 @@ The installer for Extravi ReShade Presets.
 
 Made by [sitiom](https://github.com/sitiom) and Extravi.
 
-Troubleshoot Executable [Source Code](https://github.com/ExtraviNull/troubleshoot)
+Troubleshoot Executable [Source Code](https://github.com/ExtraviNull/troubleshoot).
+
 ## Build from Source
 Get [NSIS](https://nsis.sourceforge.io/Download) first, then install these libraries:
 
