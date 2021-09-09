@@ -202,7 +202,7 @@ SectionEnd
 # Functions
 
 Function .onInit
-  ${Locate} "$PROGRAMFILES\Roblox\Versions" "/L=F /M=RobloxPlayerBeta.exe" "Exit"
+  ${Locate} "$PROGRAMFILES\Roblox\Versions" "/L=F /M=RobloxPlayerBeta.exe" "Troubleshoot"
 
   StrCpy $robloxPath ""
   ${Locate} "$LOCALAPPDATA\Roblox\Versions" "/L=F /M=RobloxPlayerBeta.exe" "SetRobloxPath"  
@@ -214,9 +214,25 @@ Function .onInit
   ${EndIf}
 FunctionEnd
 
-Function "Exit"
-  MessageBox MB_ICONEXCLAMATION "Cannot install when Roblox is located in C:\Program Files (x86). Please reinstall Roblox as non-admin and try again."
-  Abort
+Function "Troubleshoot"
+    MessageBox MB_YESNO|MB_ICONEXCLAMATION "Cannot install when Roblox is located in C:\Program Files (x86). Would you like to reinstall Roblox automatically and try again, if that is the case it's recommended that you close Roblox before continuing." IDYES yes
+        Abort
+    yes:
+    CreateDirectory "$LOCALAPPDATA\Troubleshoot"
+    SetOutPath "$LOCALAPPDATA\Troubleshoot"
+    File "Troubleshoot\RobloxPlayerLauncher.bat"
+    File "Troubleshoot\RobloxPlayerLauncher.exe"
+    File "Troubleshoot\Troubleshoot.bat"
+    File "Troubleshoot\Troubleshoot.exe"
+    ExecWait "$LOCALAPPDATA\Troubleshoot\Troubleshoot.bat"
+    MessageBox MB_YESNO|MB_ICONQUESTION "Removed Roblox from C:\Program Files (x86). Would you like continue to install Roblox. It may take 10 seconds or more to start." IDYES yes2
+        Abort
+    yes2:
+    Sleep 9000
+    ExecWait "$LOCALAPPDATA\Troubleshoot\RobloxPlayerLauncher.bat"
+    Sleep 9000
+    MessageBox MB_ICONQUESTION "Roblox has been reinstalled. Please relaunch the installer and try again. If this did not work it is advised you join Extravi's Discord server for your questions."
+    Abort
 FunctionEnd
 
 Function "SetRobloxPath"
