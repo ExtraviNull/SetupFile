@@ -144,30 +144,16 @@ SectionEnd
 SectionGroup /e "Presets"
   Section "Ultra"
     SectionIn 1
-    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Ultra Auto Depth of Field.ini"
-    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Ultra Light Depth of Field.ini"
+    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Ultra.ini"
   SectionEnd
   Section "Low"
     SectionIn 1
-    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Low Auto Depth of Field.ini"
-    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Low Light Depth of Field.ini"
+    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Low.ini"
   SectionEnd
  Section "Glossy"
     SectionIn 1
     File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Glossy.ini"
     File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Crazy Glossy.ini"
-  SectionEnd
-   Section "FakeRTGI"
-    SectionIn 1
-    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset FakeRTGI Auto Depth of Field.ini"
-    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset FakeRTGI Light Depth of Field.ini"
-  SectionEnd
-    Section "RTGI Compute Shader"
-    SectionIn 1
-    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset RTGI Compute Shader 1.00 Auto Depth of Field.ini"
-    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset RTGI Compute Shader 1.00 Light Depth of Field.ini"
-    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset RTGI Compute Shader 2.30 Auto Depth of Field.ini"
-    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset RTGI Compute Shader 2.30 Light Depth of Field.ini"
   SectionEnd
 SectionGroupEnd
 
@@ -179,18 +165,10 @@ Section "uninstall"
 
   DeleteRegKey HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\extravi-reshade-presets"
 
-  Delete "$robloxPath\Extravi's ReShade-Preset Ultra Auto Depth of Field.ini"
-  Delete "$robloxPath\Extravi's ReShade-Preset Ultra Light Depth of Field.ini"
-  Delete "$robloxPath\Extravi's ReShade-Preset Low Auto Depth of Field.ini"
-  Delete "$robloxPath\Extravi's ReShade-Preset Low Light Depth of Field.ini"
-  Delete "$robloxPath\Extravi's ReShade-Preset FakeRTGI Auto Depth of Field.ini"
-  Delete "$robloxPath\Extravi's ReShade-Preset FakeRTGI Light Depth of Field.ini"
+  Delete "$robloxPath\Extravi's ReShade-Preset Ultra.ini"
+  Delete "$robloxPath\Extravi's ReShade-Preset Low.ini"
   Delete "$robloxPath\Extravi's ReShade-Preset Glossy.ini"
   Delete "$robloxPath\Extravi's ReShade-Preset Crazy Glossy.ini"
-  Delete "$robloxPath\Extravi's ReShade-Preset RTGI Compute Shader 1.00 Auto Depth of Field.ini"
-  Delete "$robloxPath\Extravi's ReShade-Preset RTGI Compute Shader 1.00 Light Depth of Field.ini"
-  Delete "$robloxPath\Extravi's ReShade-Preset RTGI Compute Shader 2.30 Auto Depth of Field.ini"
-  Delete "$robloxPath\Extravi's ReShade-Preset RTGI Compute Shader 2.30 Light Depth of Field.ini"
   Delete "$robloxPath\ReShade.ini"
   RMDir /r "$robloxPath\reshade-shaders"
   Delete "$robloxPath\dxgi.dll"
@@ -237,5 +215,5 @@ Function "StartTaskbarProgress"
 FunctionEnd
 
 Function "OpenDiscordLink"
-  ExecShell "open" "https://discord.gg/WkjUCwD"
+  ExecShell "open" "https://discord.gg/8acYz8hQmn"
 FunctionEnd
