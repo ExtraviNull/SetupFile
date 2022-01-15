@@ -215,5 +215,5 @@ Function "StartTaskbarProgress"
 FunctionEnd
 
 Function "OpenDiscordLink"
-  ExecShell "open" "https://discord.gg/8acYz8hQmn"
+  ExecShell "open" "https://discord.gg/qkcextJwsj"
 FunctionEnd
