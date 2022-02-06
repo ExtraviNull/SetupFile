@@ -65,12 +65,12 @@ Click Next to continue."
 !define MUI_FINISHPAGE_TEXT "Setup has finished installing ${PRODUCT_NAME} on your computer. The effects will be applied the next time you launch Roblox.$\r$\n\
 $\r$\n\
 Click Finish to exit Setup."
-!define MUI_FINISHPAGE_SHOWREADME "https://extravidocs.github.io/"
-!define MUI_FINISHPAGE_SHOWREADME_CHECKED
-!define MUI_FINISHPAGE_SHOWREADME_TEXT "Discord/YouTube/Github"
+!define MUI_FINISHPAGE_SHOWREADME "https://reshade.me/"
+!define MUI_FINISHPAGE_SHOWREADME_NOTCHECKED
+!define MUI_FINISHPAGE_SHOWREADME_TEXT "Visit reshade.me"
 !define MUI_FINISHPAGE_RUN
-!define MUI_FINISHPAGE_RUN_TEXT "Visit reshade.me"
-!define MUI_FINISHPAGE_RUN_NOTCHECKED
+!define MUI_FINISHPAGE_RUN_TEXT "Discord Server etc"
+!define MUI_FINISHPAGE_RUN_CHECKED
 !define MUI_FINISHPAGE_RUN_FUNCTION "OpenLink"
 
 !insertmacro MUI_PAGE_WELCOME
@@ -132,7 +132,6 @@ Section "ReShade (required)"
 
   !insertmacro MoveFolder "qUINT-master\Shaders" "$robloxPath\reshade-shaders\Shaders" "*"
   RMDir /r "$INSTDIR\qUINT-master"
-  !insertmacro MoveFolder "Extravi's ReShade-Preset\ClientSettings" "$robloxPath\ClientSettings" "*"
 
   SetOutPath $robloxPath
 
@@ -140,6 +139,9 @@ Section "ReShade (required)"
   File "Extravi's ReShade-Preset\ReShade.log"
   File "Extravi's ReShade-Preset\ReShade.ini"
   File "Extravi's ReShade-Preset\NunitoSans-Regular.ttf"
+  File "Extravi's ReShade-Preset\ClientSettings.zip"
+  nsisunz::Unzip "$robloxPath\ClientSettings.zip" "$robloxPath"
+  Delete "$robloxPath\ClientSettings.zip"
 SectionEnd
 
 SectionGroup /e "Presets"
@@ -207,5 +209,5 @@ Function "StartTaskbarProgress"
 FunctionEnd
 
 Function "OpenLink"
-  ExecShell "open" "https://reshade.me/"
+  ExecShell "open" "https://extravidocs.github.io/"
 FunctionEnd
