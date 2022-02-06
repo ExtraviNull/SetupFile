@@ -65,13 +65,13 @@ Click Next to continue."
 !define MUI_FINISHPAGE_TEXT "Setup has finished installing ${PRODUCT_NAME} on your computer. The effects will be applied the next time you launch Roblox.$\r$\n\
 $\r$\n\
 Click Finish to exit Setup."
-!define MUI_FINISHPAGE_SHOWREADME "https://www.youtube.com/watch?v=rNa5VHjHeGM"
-!define MUI_FINISHPAGE_SHOWREADME_NOTCHECKED
-!define MUI_FINISHPAGE_SHOWREADME_TEXT "Please like the video it really does help a lot :)"
+!define MUI_FINISHPAGE_SHOWREADME "https://extravidocs.github.io/"
+!define MUI_FINISHPAGE_SHOWREADME_CHECKED
+!define MUI_FINISHPAGE_SHOWREADME_TEXT "Discord/YouTube/Github"
 !define MUI_FINISHPAGE_RUN
-!define MUI_FINISHPAGE_RUN_TEXT "Join Discord Server"
+!define MUI_FINISHPAGE_RUN_TEXT "Visit reshade.me"
 !define MUI_FINISHPAGE_RUN_NOTCHECKED
-!define MUI_FINISHPAGE_RUN_FUNCTION "OpenDiscordLink"
+!define MUI_FINISHPAGE_RUN_FUNCTION "OpenLink"
 
 !insertmacro MUI_PAGE_WELCOME
 !insertmacro MUI_PAGE_LICENSE "Extravi's ReShade-Preset\license.txt"
@@ -132,28 +132,21 @@ Section "ReShade (required)"
 
   !insertmacro MoveFolder "qUINT-master\Shaders" "$robloxPath\reshade-shaders\Shaders" "*"
   RMDir /r "$INSTDIR\qUINT-master"
+  !insertmacro MoveFolder "Extravi's ReShade-Preset\ClientSettings" "$robloxPath\ClientSettings" "*"
 
   SetOutPath $robloxPath
 
   File "Extravi's ReShade-Preset\dxgi.dll"
-  File "Extravi's ReShade-Preset\dxgi.log"
+  File "Extravi's ReShade-Preset\ReShade.log"
   File "Extravi's ReShade-Preset\ReShade.ini"
-  File "Extravi's ReShade-Preset\SegoeUI.ttf"
+  File "Extravi's ReShade-Preset\NunitoSans-Regular.ttf"
 SectionEnd
 
 SectionGroup /e "Presets"
-  Section "Ultra"
+  Section "Extravi's ReShade-Presets"
     SectionIn 1
-    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Ultra.ini"
-  SectionEnd
-  Section "Low"
-    SectionIn 1
-    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Low.ini"
-  SectionEnd
- Section "Glossy"
-    SectionIn 1
-    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Glossy.ini"
-    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Crazy Glossy.ini"
+    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset Added Bloom.ini"
+    File "Extravi's ReShade-Preset\Extravi's ReShade-Preset No Added Bloom.ini"
   SectionEnd
 SectionGroupEnd
 
@@ -165,15 +158,14 @@ Section "uninstall"
 
   DeleteRegKey HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\extravi-reshade-presets"
 
-  Delete "$robloxPath\Extravi's ReShade-Preset Ultra.ini"
-  Delete "$robloxPath\Extravi's ReShade-Preset Low.ini"
-  Delete "$robloxPath\Extravi's ReShade-Preset Glossy.ini"
-  Delete "$robloxPath\Extravi's ReShade-Preset Crazy Glossy.ini"
+  Delete "$robloxPath\Extravi's ReShade-Preset Added Bloom.ini"
+  Delete "$robloxPath\Extravi's ReShade-Preset No Added Bloom.ini"
   Delete "$robloxPath\ReShade.ini"
   RMDir /r "$robloxPath\reshade-shaders"
+  RMDir /r "$robloxPath\ClientSettings"
   Delete "$robloxPath\dxgi.dll"
-  Delete "$robloxPath\dxgi.log"
-  Delete "$robloxPath\SegoeUI.ttf"
+  Delete "$robloxPath\ReShade.log"
+  Delete "$robloxPath\NunitoSans-Regular.ttf"
 SectionEnd
 
 ####################################################################
@@ -214,6 +206,6 @@ Function "StartTaskbarProgress"
   w7tbp::Start
 FunctionEnd
 
-Function "OpenDiscordLink"
-  ExecShell "open" "https://discord.gg/qkcextJwsj"
+Function "OpenLink"
+  ExecShell "open" "https://reshade.me/"
 FunctionEnd
