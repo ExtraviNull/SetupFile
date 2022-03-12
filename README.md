@@ -6,6 +6,8 @@ Made by [sitiom](https://github.com/sitiom) and Extravi.
 
 Download [ExtraviDocs](https://extravidocs.github.io/).
 
+Source code has moved https://github.com/ExtraviDocs/Installer
+
 ## Build from Source
 Get [NSIS](https://nsis.sourceforge.io/Download) first, then install these libraries:
 
