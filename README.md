@@ -4,7 +4,7 @@ The installer for Extravi ReShade Presets.
 
 Made by [sitiom](https://github.com/sitiom) and Extravi.
 
-Download [ExtraviDocs](https://extravidocs.github.io/).
+Download [ExtraviDocs](https://extravi.dev/).
 
 Source code has moved https://github.com/ExtraviDocs/Installer
 
